@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantai Lhokseumawe - Wisata Aceh Utara</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('img/bg.png') center/cover no-repeat fixed;
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .header {
+            background: #2A0001;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            color: white;
+            font-size: 42px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+        }
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .spot-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .image-container:hover .spot-image {
+            transform: scale(1.05);
+        }
+        .content {
+            padding: 50px;
+        }
+        .description {
+            margin-bottom: 30px;
+        }
+        .description p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .route-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            margin-top: 20px;
+        }
+        .route-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+        }
+        .route-button::before {
+            content: "🗺️";
+            font-size: 22px;
+        }
+        
+        /* Responsive Design untuk Mobile */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                border-radius: 16px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            .content {
+                padding: 30px 25px;
+            }
+            .description p {
+                font-size: 16px;
+            }
+            .spot-image {
+                height: 350px;
+            }
+            .route-button {
+                padding: 14px 24px;
+                font-size: 16px;
+            }
+            .back-link {
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
+            h1 {
+                font-size: 24px;
+                padding: 30px 20px;
+            }
+            .content {
+                padding: 25px 20px;
+            }
+            .description p {
+                font-size: 15px;
+                margin-bottom: 15px;
+            }
+            .spot-image {
+                height: 250px;
+            }
+            .route-button {
+                padding: 12px 20px;
+                font-size: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+            .route-button::before {
+                font-size: 20px;
+            }
+            .back-link {
+                padding: 10px 20px;
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
+            }
+            .button-container {
+                margin-top: 30px;
+            }
+            /* Mobile: show full image without cropping */
+            .image-container { overflow: visible; }
+            .spot-image {
+                height: auto;
+                width: 100%;
+                max-height: 80vh;
+                object-fit: contain;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+    
+</div>
+
+<div class="image-container">
+    <img src="img/sepuluh.jpg" alt="makam khoja tajuddin" class="spot-image">
+</div>
+
+<div class="content">
+    <div class="history">
+        <h2>MAKAM RAJA SUR BIN RAJA SUR</h2>
+        <p>Kompleks Makam Raja Sur bin Raja Sur terletak di Gampong Teungoh, Kecamatan Samudera, Kabupaten Aceh Utara, dan termasuk salah satu situs penting peninggalan masa Kerajaan Samudera Pasai. Raja Sur bin Raja Sur diyakini sebagai salah satu bangsawan atau keturunan langsung dari garis kerajaan Samudera Pasai, yang turut berperan dalam menjaga kesinambungan pemerintahan serta penyebaran Islam di wilayah tersebut. Keberadaan Makam ini menjadi bukti sejarah bahwa kawasan Beuringen merupakan pemakaman pusat para raja, ulama, dan tokoh penting kerajaan pada masa kejayaan Pasai.
+        </p>
+        <br>
+        <p>
+            Kompleks Makam Raja Sur bin Raja Sur terletak di wilayah Aceh Utara dan merupakan salah satu peninggalan penting dari masa Kerajaan Samudra Pasai. Kompleks ini menyimpan makam bangsawan bergelar Raja Sur bin Raja Sur, yang diduga merupakan keturunan langsung dari raja Samudra Pasai. Nisan di Makam ini terbuat dari batu khas Aceh dengan ukiran kaligrafi Arab yang indah, mencerminkan perpaduan antara seni Islam dan budaya lokal. Sebagai bagian dari jejak sejarah awal Islam di Nusantara, kompleks makam ini menjadi saksi bisu kejayaan masa lalu serta warisan spiritual dan budaya yang bernilai tinggi bagi masyarakat Aceh.
+        </p>
+       <br>
+    </div>
+</div>
+            <div class="button-container">
+                <a href="https://maps.app.goo.gl/RoKrwohFiWxUgp3Z8" target="_blank" class="route-button">Lihat Rute di Google Maps</a>
+                <br><br>
+                <a href="index.html" class="back-link">← Kembali ke Peta</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

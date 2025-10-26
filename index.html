@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisata Aceh Utara</title>
+    <style>
+        @font-face {
+            font-family: 'AlMalik';
+            src: url('fonts/AlMalik.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('img/bg.png') center/cover no-repeat fixed;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+        .main-content {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: white;
+        }
+        .hero-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-family: 'AlMalik', serif; /* font Arabic Al Malik */
+        }
+        .hero-section p {
+            font-size: 20px;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+        .map-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        .tourist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            animation: fadeIn 0.8s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tourist-spot {
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .tourist-spot:hover .spot-image-wrapper {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+        .tourist-spot:hover .spot-image-wrapper::before {
+            opacity: 0.3;
+        }
+        .tourist-spot:hover h3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .spot-image-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            border: 4px solid white;
+            background: white;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+        }
+        .spot-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+        .tourist-spot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .tourist-spot h3 {
+            margin: 15px 0 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            color: #2c3e50;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color:#2A0001;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .navbar-title {
+            font-family: "Helvetica", "Arial", sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .navbar-menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .navbar-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero-section h2 {
+                font-size: 32px;
+            }
+            .hero-section p {
+                font-size: 16px;
+            }
+            .navbar-title {
+                font-size: 16px;
+            }
+            .navbar-menu {
+                gap: 10px;
+            }
+            .navbar-menu a {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            .tourist-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            .tourist-spot h3 {
+                font-size: 15px;
+                padding: 12px 15px;
+            }
+            .map-container {
+                padding: 30px 15px 60px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .main-content {
+                padding-top: 70px;
+            }
+            .hero-section {
+                padding: 40px 15px 30px;
+            }
+            .hero-section h2 {
+                font-size: 24px;
+                font-family: 'AlMalik', serif; /* tetap font Al Malik di mobile */
+            }
+            .hero-section p {
+                font-size: 14px;
+            }
+            .navbar-title {
+                font-size: 14px;
+            }
+            .navbar-menu {
+                gap: 5px;
+            }
+            .navbar-menu a {
+                padding: 5px 8px;
+                font-size: 12px;
+            }
+            .tourist-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .tourist-spot img {
+                height: auto;
+            }
+            .tourist-spot h3 {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1 class="navbar-title">Komplek Makam Samudra Pasai</h1>
+            <ul class="navbar-menu">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <div class="hero-section">
+            <h2>Jelajahi Komplek Makam Samudra Pasai</h2>
+            <p>Samudera Pasai bukan sekadar nama, tapi cahaya peradaban yang harus dijaga.</p>
+        </div>
+        
+        <div class="map-container">
+            <div class="tourist-grid">
+                <a href="wisata1.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/satu.jpg" alt="Pantai Lhokseumawe">
+                    </div>
+                    <h3>KOMPLEK MAKAM MALIKUSSALEH</h3>
+                </a>
+                
+                <a href="wisata2.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/dua.jpg" alt="KOMPLEK MAKAM SULTAN MALIKUSSALEH (MALIK AS SHALIH)">
+                    </div>
+                    <h3>KOMPLEK MAKAM SULTANAH NAHRASIYAH</h3>
+                </a>
+                
+                <a href="wisata3.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/tiga.jpg" alt="Makam Teungku 44">
+                    </div>
+                    <h3>KOMPLEK MAKAM TAJUL MULUK</h3>
+                </a>
+                
+                <a href="wisata4.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/empat.jpg" alt="KOMPLEK MAKAM ABDULLAH BIN MUHAMMAD AL ABBSYI">
+                    </div>
+                    <h3>KOMPLEK MAKAM RAJA KHAN</h3>
+                </a>
+                
+                <a href="wisata5.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/lima.jpg" alt="KOMPLEK MAKAM TAJUL MULUK">
+                    </div>
+                    <h3>KOMPLEK MAKAM KHOJA TAJUDDIN </h3>
+                </a>
+                
+                <a href="wisata6.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/enam.jpg" alt="KOMPLEK MAKAM RAJA KHAN">
+                    </div>
+                    <h3>KOMPLEK MAKAM SIDI ABDULLAH</h3>
+                </a>
+                
+                <a href="wisata7.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/tujuh.jpg" alt="KOMPLEK MAKAM KHWAJA TAJUDDIN">
+                    </div>
+                    <h3>KOMPLEK MAKAM PEUT PLOH PEUT (44)</h3>
+                </a>
+                
+                <a href="wisata8.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/delapan.jpg" alt="KOMPLEK MAKAM SULTANAH NAHRASIYAH">
+                    </div>
+                    <h3>KOMPLEK MAKAM SAID SYARIF</h3>
+                </a>
+                
+                <a href="wisata9.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/sembilan.jpg" alt="KOMPLEK MAKAM BATE BALEE">
+                    </div>
+                    <h3>KOMPLEK MAKAM BATE BALEE</h3>
+                </a>
+                
+                <a href="wisata10.html" class="tourist-spot">
+                    <div class="spot-image-wrapper">
+                        <img src="img/sepuluh.jpg" alt="KOMPLEK MAKAM RAJA SUR BIN RAJA SUR">
+                    </div>
+                    <h3>KOMPLEK MAKAM RAJA SUR BIN RAJA SUR</h3>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
